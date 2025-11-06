@@ -120,7 +120,7 @@ p.section-description {
     font-family: var(--font-heading);
     font-size: 2.8em; /* اندازه متن "Breathwork Healer" */
     font-weight: 700;
-    color: var(--primary-color);
+    color: white;
     white-space: nowrap; /* از شکسته شدن جمله جلوگیری می‌کند */
     display: flex; /* برای اینکه لوگو و متن کنار هم قرار بگیرند */
     align-items: center; /* تراز عمودی لوگو با متن */
@@ -179,14 +179,23 @@ p.section-description {
 .hero-section h1 {
     font-size: 4.5em;
     margin-bottom: 25px;
+    margin-top: 30px;
     color: white;
+    line-height: 1.1;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-section h3 {
+    font-size: 1.80em;
+    margin-bottom:70px;
+    color: rgb(214, 212, 212);
     line-height: 1.1;
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
 
 .hero-section p {
     font-size: 1.5em;
-    margin-bottom: 40px;
+    /*margin-bottom: 40px;*/
     color: rgba(255, 255, 255, 0.95);
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     font-weight: 300;
