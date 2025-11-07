@@ -59,4 +59,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // مطمئن شوید که YOUR_UNIQUE_ID را با شناسه فرم Formspree خود جایگزین کنید!
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpwovkow"; 
+
+const form = document.getElementById('contact-form');
+const statusDiv = document.getElementById('form-status');
+
+if (form) {
+    form.addEventListener("submit", function(e) {
+        e.preventDefault(); // جلوگیری از ارسال پیش‌فرض و رفرش شدن صفحه
+        
+        // پاک کردن پیام‌های قبلی
+        statusDiv.innerHTML = ""; 
+        
+        const data = new FormData(e.target);
+        
+        fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Accept': 'application/json' 
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // ارسال موفق
+                statusDiv.innerHTML = "✅ Message sent successfully!";
+                form.reset(); // پاک کردن فیلدها
+            } else {
+                // ارسال ناموفق (بررسی پاسخ Formspree برای پیام خطا)
+                return response.json().then(data => {
+                    let errorMessage = "❌ Unknown error occurred during submission.";
+                    if (data && data["errors"]) {
+                        errorMessage = "❌ Submission Error: " + data["errors"].map(error => error["message"]).join(", ");
+                    }
+                    statusDiv.innerHTML = errorMessage;
+                })
+            }
+        })
+        .catch(error => {
+            // خطای شبکه
+            statusDiv.innerHTML = "❌ Connection Error: Please check your internet connection and try again.";
+        });
+    });
+}
 });

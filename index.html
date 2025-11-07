@@ -138,7 +138,7 @@
                 <h2 class="fade-in">Get in Touch</h2>
                 <p class="section-description fade-in delay-1">Connect with me on social media or send a direct message.</p>
                 <div class="contact-form-container fade-in delay-2">
-                    <form action="https://formspree.io/f/xpwovkow" method="POST" class="contact-form">
+                    <form id="contact-form" method="POST" class="contact-form">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" id="name" name="name" required>
@@ -151,8 +151,8 @@
                             <label for="message">Message:</label>
                             <textarea id="message" name="message" rows="6" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                        
+                        <div id="form-status"></div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>                       
                     </form>
                 </div>
                 <div class="contact-social-links fade-in delay-3">
